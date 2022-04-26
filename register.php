@@ -16,7 +16,7 @@
     $result = mysqli_query($conn, $query);
 
     if ($result) {
-      header("Location:login.php");
+      header("Location:index.php");
       echo "<div class='alert alert-success'>You have a successful sign up</div>";
     }
 }else{
@@ -24,9 +24,9 @@
 
  <div  style="margin-top:40px;">
  <div class="offset-md-3 col-md-6">
-<div class="card bg-dark text-white">
+<div class="card bg-light text-dark">
    <div class="card-header">
-     <h4 class="card-title text-center">Registration Here</h4>
+     <h4 class="card-title  text-center">Registration Here</h4>
    </div>
    <div class="card-body">
      <form action="" method="post">
@@ -44,7 +44,7 @@
        </div>
        </div>
        <div class="card-footer">
-         <button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">sign Up</button>
+         <button type="submit" class="btn btn-success" name="submit" style="width: 100%;">sign Up</button>
        </div>
      </form> <!-- form end -->
    </div>  <!-- card end -->
