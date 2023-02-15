@@ -1,29 +1,14 @@
 <?php
-session_start();
   require_once './include/connection.php'; 
   require_once './public/header.php'; 
-  if(!isset($_SESSION['id']))
-  {
-    echo "<div class='alert alert-danger'>غير مسموح بدخول هذه الصفحه</div>";
-    header("REFRESH:1;URL=login.php");
-  }else {
-?>
+  
 
-    <!-- Start Navbar -->
-    <nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
+?>
+ <nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
       <div class="container">
         
         <a href="index.php" class="navbar-brand">تدوينات</a>
-        <?php
-        $query = 'SELECT * FROM users';
-        $res = mysqli_query($connection , $query);
-        $row = mysqli_fetch_assoc($res);
-        if($row['name'] ==null){
-        ?> 
 
-        <?php } else {?>
-                  <a href='index.php' class="navbar-brand"><?= $row['name']?> </a>
-          <?php }?>
         <button
           class="navbar-toggler"
           data-toggle="collapse"
@@ -58,9 +43,12 @@ session_start();
         <div class="row">
           <div class="col-md-8">
             <?php
-              $query = 'SELECT * FROM posts ORDER BY id DESC';
-              $res = mysqli_query($connection , $query);
-              while($row = mysqli_fetch_assoc($res)){
+              if(isset($_GET['category']))
+              {
+                $cat = $_GET['category'];
+                $query = "SELECT * FROM posts WHERE categorie = '$cat' ORDER BY id DESC";
+                $res = mysqli_query($connection , $query);
+                while($row = mysqli_fetch_assoc($res)){
                 ?>
              <div class="post">
               <div class="post-image">
@@ -94,7 +82,14 @@ session_start();
                 <a href='post.php?id=<?= $row['id'] ?>'><button class="btn btn-dark">اكمل القراءة</button></a>
               </div>
             </div>
-           <?php }?>
+           <?php }}
+           else {
+            echo "<h4>
+                 لا توجد صفحه بهذا الاسم
+                </h4>";
+          }
+           
+           ?>
           </div>
           <div class="col-md-4 d-none d-sm-block">
             <!-- START CATEGORIES -->
@@ -115,7 +110,6 @@ session_start();
                 <?php }?>                
               </ul>
             </div>
-            <!-- END CATEGORIES -->
             <!-- START LATEST POSTS -->
             <div class="last-posts">
               <h4>احدث المنشورات</h4>
@@ -146,11 +140,4 @@ session_start();
         </div>
       </div>
     </div>
-    <!-- END CONTENT -->
-    <!-- START FOOTER -->
-    <footer>
-      <p>جميع الحقوق محفوظة &copy; 2023</p>
-    </footer>
-    <!-- END FOOTER -->
-    <?php }?>
-    <?php require_once './public/footer.php'; ?>
+          <?php require_once './public/footer.php'; ?>

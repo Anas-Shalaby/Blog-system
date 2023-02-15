@@ -1,0 +1,93 @@
+:root {
+  --first-color: #5b4834;
+  --second-color: #aaa69d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a,
+a:hover {
+  text-decoration: none !important;
+}
+.btn-custom {
+  background: #263238;
+  color: #fff;
+  padding: 5px 20px;
+  width: 100px;
+}
+.btn-custom:hover {
+  color: #fff;
+}
+body {
+  font-family: Cairo;
+  background-color: #f3f3f3;
+  text-align: right;
+}
+/* START SIDE AREA */
+
+#side-area {
+  background: #263238;
+  color: #fff;
+  height: 100vh;
+  padding: 20px 0;
+}
+#side-area h4 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+#side-area ul {
+  padding-right: 0;
+}
+#side-area ul li {
+  margin-bottom: 20px;
+  padding: 15px;
+}
+.Admin h5 {
+  font-size: 20px;
+  margin-top: 1rem;
+  opacity: 0.5;
+}
+@media screen and (max-width: 600px) {
+  #side-area ul li {
+    text-align: center;
+  }
+}
+#side-area ul li:hover,
+#side-area ul li:hover a {
+  background: #fff;
+  color: #263238;
+}
+#side-area ul li a {
+  color: #fff;
+}
+/* END SIDE AREA */
+/* START CATEGORIES */
+.add-categorie {
+  margin-top: 2rem;
+}
+.add-categorie label {
+  font-weight: bold;
+}
+/* END CATEGORIES */
+.display-cat tr {
+  text-align: center;
+}
+.display-cat tr:nth-child(2n + 1) {
+  background: #26323829;
+}
+.display-cat tr:first-child {
+  background: #263238;
+  color: #fff;
+  text-align: center;
+}
+/* DELETE BUTTON */
+.link-danger i {
+  color: red;
+}
